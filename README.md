@@ -1,8 +1,8 @@
 # Tensorflow Lite On Windows
 
-Build tensorflow lite libraries on windows system.
+Build tensorflow lite libraries on windows system
 
-# Revision of major modules:
+# Revision of major modules
   - tensorflow lite:
     - Git Repo : https://github.com/tensorflow/tensorflow.git
     - Revision : r2.0 (2c319fb415a5c91ed7c0b81af72df410a69b8576)
@@ -13,17 +13,17 @@ Build tensorflow lite libraries on windows system.
     - flatbuffers (https://github.com/google/flatbuffers/archive/1f5eae5d6a135ff6811724f6c57f911d1f46bb15.tar.gz)
     - farmhash (https://mirror.bazel.build/github.com/google/farmhash/archive/816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz)
 
-# Modification to tensorflow lite: 
+# Modification to tensorflow lite
   The following files have been modified a little bit for compiling/linking issues.
-  - tensorflow/tensorflow/lite/kernels/register.cc
-  - tensorflow/tensorflow/lite/kernels/register_ref.cc
-  - tensorflow/tensorflow/lite/mmap_allocation.cc
-  - tensorflow/tensorflow/lite/nnapi/nnapi_implementation.cc
-  - tensorflow/tensorflow/lite/nnapi_delegate.cc
+  - tensorflow\tensorflow\lite\kernels\register.cc
+  - tensorflow\tensorflow\lite\kernels\register_ref.cc
+  - tensorflow\tensorflow\lite\mmap_allocation.cc
+  - tensorflow\tensorflow\lite\nnapi\nnapi_implementation.cc
+  - tensorflow\tensorflow\lite\nnapi_delegate.cc
 
-# Exported interfaces:
-  - Functions that defined in : tensorflow\tensorflow\contrib\lite\c\c_api_internal.h
+# Exported interfaces
+  - Functions that defined in : tensorflow\tensorflow\lite\c\c_api_internal.h
 
-# Development Environments:
+# Development Environments
   - Windows7, x64
   - Visual Studio 2017 Community
