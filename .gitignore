@@ -1,0 +1,13 @@
+.gitignore
+
+Debug
+Release
+Win32
+x64
+bin
+obj
+.vs
+*.opensdf
+*.sdf
+*.v12.suo
+*.vcxproj.user
