@@ -1,0 +1,19 @@
+EXPORTS
+    ;;
+    ;;Exports of tensorflow\contrib\lite\c\c_api_internal.h
+    TfLiteIntArrayGetSizeInBytes
+    TfLiteIntArrayCreate
+    TfLiteIntArrayEqual
+    TfLiteIntArrayEqualsArray
+    TfLiteIntArrayCopy
+    TfLiteIntArrayFree
+    TfLiteFloatArrayGetSizeInBytes
+    TfLiteFloatArrayCreate
+    TfLiteFloatArrayFree
+    TfLiteTypeGetName
+    TfLiteTensorDataFree
+    TfLiteQuantizationFree
+    TfLiteTensorFree
+    TfLiteTensorReset
+    TfLiteTensorRealloc
+    TfLiteDelegateCreate
