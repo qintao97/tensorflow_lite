@@ -88,7 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;NOMINMAX;FARMHASH_NO_BUILTIN_EXPECT;_TQ_CHANGES_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\tensorflow;..\tensorflow\third_party;..\tensorflow\third_party\eigen3;..\tensorflow\third_party\gemmlowp;..\tensorflow\third_party\farmhash;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;4244;4267;4200</DisableSpecificWarnings>
@@ -105,7 +105,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;NOMINMAX;FARMHASH_NO_BUILTIN_EXPECT;_TQ_CHANGES_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\tensorflow;..\tensorflow\third_party;..\tensorflow\third_party\eigen3;..\tensorflow\third_party\gemmlowp;..\tensorflow\third_party\farmhash;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;4244;4267;4200</DisableSpecificWarnings>
@@ -124,7 +124,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;NOMINMAX;FARMHASH_NO_BUILTIN_EXPECT;_TQ_CHANGES_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\tensorflow;..\tensorflow\third_party;..\tensorflow\third_party\eigen3;..\tensorflow\third_party\gemmlowp;..\tensorflow\third_party\farmhash;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;4244;4267;4200</DisableSpecificWarnings>
@@ -145,7 +145,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;TFLITE_EXPORTS;_WINDOWS;_USRDLL;NOMINMAX;FARMHASH_NO_BUILTIN_EXPECT;_TQ_CHANGES_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>..\tensorflow;..\tensorflow\third_party;..\tensorflow\third_party\eigen3;..\tensorflow\third_party\gemmlowp;..\tensorflow\third_party\farmhash;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996;4244;4267;4200</DisableSpecificWarnings>

@@ -377,7 +377,9 @@ BuiltinOpResolver::BuiltinOpResolver() {
 
   // TODO(andrewharp, ahentz): Move these somewhere more appropriate so that
   // custom ops aren't always included by default.
+#ifndef _TQ_CHANGES_
   AddCustom("Mfcc", tflite::ops::custom::Register_MFCC());
+#endif
   AddCustom("AudioSpectrogram",
             tflite::ops::custom::Register_AUDIO_SPECTROGRAM());
   AddCustom("TFLite_Detection_PostProcess",

@@ -14,10 +14,14 @@ limitations under the License.
 ==============================================================================*/
 
 #include <fcntl.h>
+#ifndef _TQ_CHANGES_
 #include <sys/mman.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
+#ifndef _TQ_CHANGES_
 #include <unistd.h>
+#endif
 
 #include "tensorflow/lite/allocation.h"
 #include "tensorflow/lite/core/api/error_reporter.h"
@@ -26,6 +30,7 @@ namespace tflite {
 
 MMAPAllocation::MMAPAllocation(const char* filename,
                                ErrorReporter* error_reporter)
+#ifndef _TQ_CHANGES_
     : Allocation(error_reporter), mmapped_buffer_(MAP_FAILED) {
   mmap_fd_ = open(filename, O_RDONLY);
   if (mmap_fd_ == -1) {
@@ -42,20 +47,30 @@ MMAPAllocation::MMAPAllocation(const char* filename,
     return;
   }
 }
+#else
+    : Allocation(error_reporter), mmapped_buffer_(NULL) {
+}
+#endif
 
 MMAPAllocation::~MMAPAllocation() {
+#ifndef _TQ_CHANGES_
   if (valid()) {
     munmap(const_cast<void*>(mmapped_buffer_), buffer_size_bytes_);
   }
   if (mmap_fd_ != -1) close(mmap_fd_);
+#endif
 }
 
 const void* MMAPAllocation::base() const { return mmapped_buffer_; }
 
 size_t MMAPAllocation::bytes() const { return buffer_size_bytes_; }
 
+#ifndef _TQ_CHANGES_
 bool MMAPAllocation::valid() const { return mmapped_buffer_ != MAP_FAILED; }
-
 bool MMAPAllocation::IsSupported() { return true; }
+#else
+bool MMAPAllocation::valid() const { return mmapped_buffer_ != NULL; }
+bool MMAPAllocation::IsSupported() { return false; }
+#endif
 
 }  // namespace tflite

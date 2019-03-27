@@ -13,12 +13,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 #include "tensorflow/lite/nnapi/nnapi_implementation.h"
-
+#ifndef _TQ_CHANGES_
 #include <dlfcn.h>
+#endif
 #include <fcntl.h>
+#ifndef _TQ_CHANGES_
 #include <sys/mman.h>
+#endif
 #include <sys/stat.h>
+#ifndef _TQ_CHANGES_
 #include <unistd.h>
+#endif
 
 #include <cstdlib>
 
@@ -68,7 +73,11 @@ void* LoadFunction(void* handle, const char* name, bool optional) {
   if (handle == nullptr) {
     return nullptr;
   }
+#ifndef _TQ_CHANGES_
   void* fn = dlsym(handle, name);
+#else
+  void* fn = nullptr;
+#endif
   if (fn == nullptr && !optional) {
     NNAPI_LOG("nnapi error: unable to open function %s", name);
   }
@@ -78,6 +87,7 @@ void* LoadFunction(void* handle, const char* name, bool optional) {
 #ifndef __ANDROID__
 // Add /dev/shm implementation of shared memory for non-Android platforms
 int ASharedMemory_create(const char* name, size_t size) {
+#ifndef _TQ_CHANGES_
   int fd = shm_open(name, O_RDWR | O_CREAT, 0644);
   if (fd < 0) {
     return fd;
@@ -88,6 +98,9 @@ int ASharedMemory_create(const char* name, size_t size) {
     return -1;
   }
   return fd;
+#else
+  return -1;
+#endif
 }
 #endif  // __ANDROID__
 
@@ -119,9 +132,12 @@ const NnApi LoadNnApi() {
 #endif  // __ANDROID__
 
   void* libneuralnetworks = nullptr;
+#ifndef _TQ_CHANGES_
   // TODO(b/123243014): change RTLD_LOCAL? Assumes there can be multiple
   // instances of nn api RT
   libneuralnetworks = dlopen("libneuralnetworks.so", RTLD_LAZY | RTLD_LOCAL);
+#else
+#endif
   if (libneuralnetworks == nullptr) {
     NNAPI_LOG("nnapi error: unable to open library %s", "libneuralnetworks.so");
   }
@@ -197,6 +213,10 @@ const NnApi LoadNnApi() {
 }  // namespace
 
 const NnApi* NnApiImplementation() {
+#ifndef _TQ_CHANGES_
   static const NnApi nnapi = LoadNnApi();
+#else
+  static const NnApi nnapi = {}; // FIXME, disable NnApi on windows
+#endif
   return &nnapi;
 }

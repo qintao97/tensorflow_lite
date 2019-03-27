@@ -15,7 +15,9 @@ limitations under the License.
 
 #include "tensorflow/lite/nnapi_delegate.h"
 #include <fcntl.h>
+#ifndef _TQ_CHANGES_
 #include <sys/mman.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
 #include "tensorflow/lite/c/builtin_op_data.h"
@@ -87,9 +89,13 @@ static const int64_t kOperandNotNeeded = -2;
 NNAPIAllocation::NNAPIAllocation(const char* filename,
                                  ErrorReporter* error_reporter)
     : MMAPAllocation(filename, error_reporter) {
+#ifndef _TQ_CHANGES_
   if (mmapped_buffer_ != MAP_FAILED)
     CHECK_NN(NnApiImplementation()->ANeuralNetworksMemory_createFromFd(
         buffer_size_bytes_, PROT_READ, mmap_fd_, 0, &handle_));
+#else
+  // FIXME
+#endif
 }
 
 NNAPIAllocation::~NNAPIAllocation() {
@@ -233,7 +239,12 @@ TfLiteStatus AddOpsAndParams(
 
     auto add_scalar_int32 = [nnapi, &nn_model, &augmented_inputs,
                              &next_id](int value) {
+#ifndef _TQ_CHANGES_
       ANeuralNetworksOperandType operand_type{.type = ANEURALNETWORKS_INT32};
+#else
+      ANeuralNetworksOperandType operand_type;
+      operand_type.type = ANEURALNETWORKS_INT32;
+#endif
       CHECK_NN(nnapi->ANeuralNetworksModel_addOperand(nn_model, &operand_type))
       CHECK_NN(nnapi->ANeuralNetworksModel_setOperandValue(
           nn_model, next_id, &value, sizeof(int32_t)))
@@ -242,7 +253,12 @@ TfLiteStatus AddOpsAndParams(
 
     auto add_scalar_float32 = [nnapi, &nn_model, &augmented_inputs,
                                &next_id](float value) {
+#ifndef _TQ_CHANGES_
       ANeuralNetworksOperandType operand_type{.type = ANEURALNETWORKS_FLOAT32};
+#else
+      ANeuralNetworksOperandType operand_type;
+      operand_type.type = ANEURALNETWORKS_FLOAT32;
+#endif
       CHECK_NN(nnapi->ANeuralNetworksModel_addOperand(nn_model, &operand_type))
       CHECK_NN(nnapi->ANeuralNetworksModel_setOperandValue(
           nn_model, next_id, &value, sizeof(float)))
@@ -250,10 +266,17 @@ TfLiteStatus AddOpsAndParams(
     };
 
     auto add_vector_int32 = [&](const int* values, uint32_t num_values) {
+#ifndef _TQ_CHANGES_
       ANeuralNetworksOperandType operand_type{
           .type = ANEURALNETWORKS_TENSOR_INT32,
           .dimensionCount = 1,
           .dimensions = &num_values};
+#else
+      ANeuralNetworksOperandType operand_type;
+      operand_type.type = ANEURALNETWORKS_TENSOR_INT32;
+      operand_type.dimensionCount = 1;
+      operand_type.dimensions = &num_values;
+#endif
       CHECK_NN(nnapi->ANeuralNetworksModel_addOperand(nn_model, &operand_type))
       CHECK_NN(nnapi->ANeuralNetworksModel_setOperandValue(
           nn_model, next_id, values, sizeof(int32_t) * num_values));
