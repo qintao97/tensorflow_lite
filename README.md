@@ -23,6 +23,12 @@ Build tensorflow lite libraries on windows system
 
 # Exported interfaces
   - Functions that defined in : tensorflow\tensorflow\lite\c\c_api_internal.h
+  - Functions that called by examples::minimal
+  - Functions that called by examples::label_image
+
+# Examples
+  - minimal (tensorflow\tensorflow\lite\examples\minimal)
+  - label_image (tensorflow\tensorflow\lite\examples\label_image)
 
 # Development Environments
   - Windows7, x64

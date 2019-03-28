@@ -26,11 +26,38 @@ limitations under the License.
 #include <vector>
 
 #include <fcntl.h>      // NOLINT(build/include_order)
+#ifndef _TQ_CHANGES_
 #include <getopt.h>     // NOLINT(build/include_order)
 #include <sys/time.h>   // NOLINT(build/include_order)
+#else
+#include "getopt.h"
+#endif
 #include <sys/types.h>  // NOLINT(build/include_order)
+#ifndef _TQ_CHANGES_
 #include <sys/uio.h>    // NOLINT(build/include_order)
 #include <unistd.h>     // NOLINT(build/include_order)
+#endif
+
+#ifdef _TQ_CHANGES_
+#include <windows.h>
+int gettimeofday(struct timeval * tp, struct timezone * tzp)
+{
+    static const uint64_t EPOCH = ((uint64_t)116444736000000000ULL);
+
+    SYSTEMTIME  system_time;
+    FILETIME    file_time;
+    uint64_t    time;
+
+    GetSystemTime(&system_time);
+    SystemTimeToFileTime(&system_time, &file_time);
+    time = ((uint64_t)file_time.dwLowDateTime);
+    time += ((uint64_t)file_time.dwHighDateTime) << 32;
+
+    tp->tv_sec = (long)((time - EPOCH) / 10000000L);
+    tp->tv_usec = (long)(system_time.wMilliseconds * 1000);
+    return 0;
+}
+#endif
 
 #include "tensorflow/lite/kernels/register.h"
 #include "tensorflow/lite/model.h"

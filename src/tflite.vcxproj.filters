@@ -427,5 +427,8 @@
     <None Include="tflite.def">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="tflite_x86.def">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

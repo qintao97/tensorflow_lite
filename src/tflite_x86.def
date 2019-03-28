@@ -1,0 +1,45 @@
+EXPORTS
+    ;;
+    ;;Exports of tensorflow\contrib\lite\c\c_api_internal.h
+    TfLiteIntArrayGetSizeInBytes
+    TfLiteIntArrayCreate
+    TfLiteIntArrayEqual
+    TfLiteIntArrayEqualsArray
+    TfLiteIntArrayCopy
+    TfLiteIntArrayFree
+    TfLiteFloatArrayGetSizeInBytes
+    TfLiteFloatArrayCreate
+    TfLiteFloatArrayFree
+    TfLiteTypeGetName
+    TfLiteTensorDataFree
+    TfLiteQuantizationFree
+    TfLiteTensorFree
+    TfLiteTensorReset
+    TfLiteTensorRealloc
+    TfLiteDelegateCreate
+    ;;
+    ;;Exports for test_minimal
+    ?DefaultErrorReporter@tflite@@YAPAVErrorReporter@1@XZ
+    ??1Interpreter@tflite@@QAE@XZ
+    ?AllocateTensors@Interpreter@tflite@@QAE?AW4TfLiteStatus@@XZ
+    ?Invoke@Interpreter@tflite@@QAE?AW4TfLiteStatus@@XZ
+    ?BuildFromFile@FlatBufferModel@tflite@@SA?AV?$unique_ptr@VFlatBufferModel@tflite@@U?$default_delete@VFlatBufferModel@tflite@@@std@@@std@@PBDPAVErrorReporter@2@@Z
+    ??1FlatBufferModel@tflite@@QAE@XZ
+    ??0InterpreterBuilder@tflite@@QAE@ABVFlatBufferModel@1@ABVOpResolver@1@@Z
+    ??1InterpreterBuilder@tflite@@QAE@XZ
+    ??RInterpreterBuilder@tflite@@QAE?AW4TfLiteStatus@@PAV?$unique_ptr@VInterpreter@tflite@@U?$default_delete@VInterpreter@tflite@@@std@@@std@@@Z
+    ??0BuiltinOpResolver@builtin@ops@tflite@@QAE@XZ
+    ?PrintInterpreterState@tflite@@YAXPAVInterpreter@1@@Z
+    ;;
+    ;;Exports for test_labelImage
+    ??0Interpreter@tflite@@QAE@PAVErrorReporter@1@@Z
+    ?SetInputs@Interpreter@tflite@@QAE?AW4TfLiteStatus@@V?$vector@HV?$allocator@H@std@@@std@@@Z
+    ?SetOutputs@Interpreter@tflite@@QAE?AW4TfLiteStatus@@V?$vector@HV?$allocator@H@std@@@std@@@Z
+    ?AddNodeWithParameters@Interpreter@tflite@@QAE?AW4TfLiteStatus@@ABV?$vector@HV?$allocator@H@std@@@std@@0PBDIPAXPBU_TfLiteRegistration@@PAH@Z
+    ?AddTensors@Interpreter@tflite@@QAE?AW4TfLiteStatus@@HPAH@Z
+    ?SetTensorParametersReadWrite@Interpreter@tflite@@QAE?AW4TfLiteStatus@@HW4TfLiteType@@PBDIPBHUTfLiteQuantizationParams@@_N@Z
+    ?UseNNAPI@Interpreter@tflite@@QAEX_N@Z
+    ?SetNumThreads@Interpreter@tflite@@QAEXH@Z
+    ?SetAllowFp16PrecisionForFp32@Interpreter@tflite@@QAEX_N@Z
+    ?SetProfiler@Interpreter@tflite@@QAEXPAVProfiler@profiling@2@@Z
+    ?FindOp@BuiltinOpResolver@builtin@ops@tflite@@UBEPBU_TfLiteRegistration@@W4BuiltinOperator@4@H@Z

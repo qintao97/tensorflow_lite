@@ -17,3 +17,29 @@ EXPORTS
     TfLiteTensorReset
     TfLiteTensorRealloc
     TfLiteDelegateCreate
+    ;;
+    ;;Exports for test_minimal
+    ?DefaultErrorReporter@tflite@@YAPEAVErrorReporter@1@XZ
+    ??1Interpreter@tflite@@QEAA@XZ
+    ?AllocateTensors@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@XZ
+    ?Invoke@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@XZ
+    ?BuildFromFile@FlatBufferModel@tflite@@SA?AV?$unique_ptr@VFlatBufferModel@tflite@@U?$default_delete@VFlatBufferModel@tflite@@@std@@@std@@PEBDPEAVErrorReporter@2@@Z
+    ??1FlatBufferModel@tflite@@QEAA@XZ
+    ??0InterpreterBuilder@tflite@@QEAA@AEBVFlatBufferModel@1@AEBVOpResolver@1@@Z
+    ??1InterpreterBuilder@tflite@@QEAA@XZ
+    ??RInterpreterBuilder@tflite@@QEAA?AW4TfLiteStatus@@PEAV?$unique_ptr@VInterpreter@tflite@@U?$default_delete@VInterpreter@tflite@@@std@@@std@@@Z
+    ??0BuiltinOpResolver@builtin@ops@tflite@@QEAA@XZ
+    ?PrintInterpreterState@tflite@@YAXPEAVInterpreter@1@@Z
+    ;;
+    ;;Exports for test_labelImage
+    ??0Interpreter@tflite@@QEAA@PEAVErrorReporter@1@@Z
+    ?SetInputs@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@V?$vector@HV?$allocator@H@std@@@std@@@Z
+    ?SetOutputs@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@V?$vector@HV?$allocator@H@std@@@std@@@Z
+    ?AddNodeWithParameters@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@AEBV?$vector@HV?$allocator@H@std@@@std@@0PEBD_KPEAXPEBU_TfLiteRegistration@@PEAH@Z
+    ?AddTensors@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@HPEAH@Z
+    ?SetTensorParametersReadWrite@Interpreter@tflite@@QEAA?AW4TfLiteStatus@@HW4TfLiteType@@PEBD_KPEBHUTfLiteQuantizationParams@@_N@Z
+    ?UseNNAPI@Interpreter@tflite@@QEAAX_N@Z
+    ?SetNumThreads@Interpreter@tflite@@QEAAXH@Z
+    ?SetAllowFp16PrecisionForFp32@Interpreter@tflite@@QEAAX_N@Z
+    ?SetProfiler@Interpreter@tflite@@QEAAXPEAVProfiler@profiling@2@@Z
+    ?FindOp@BuiltinOpResolver@builtin@ops@tflite@@UEBAPEBU_TfLiteRegistration@@W4BuiltinOperator@4@H@Z
